@@ -1,0 +1,18 @@
+[core]
+	excludesfile = /Users/sandesh/.gitexcludes
+[user]
+	name = Sandesh Devaraju
+	email = scouredimage@gmail.com
+[color]
+	ui = auto
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	staged = diff --cached
+	amend = commit --amend
+	oneline = log --oneline
+	unstaged = diff
+	both = diff HEAD
+[log]
+	decorate = short

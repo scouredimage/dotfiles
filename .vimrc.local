@@ -1,0 +1,35 @@
+set shiftwidth=2
+set expandtab
+set tabstop=2
+set t_Co=256
+
+" CTRL+b opens the buffer list
+map <C-g> <esc>:BufExplorer<cr>
+
+" gz in command mode closes the current buffer
+map gz :bdelete<cr>
+
+" g[bB] in command mode switch to the next/prev. buffer
+map gb :bnext<cr>
+map gB :bprev<cr>
+
+" lvim to search for current word under cursor, restricted to
+" files of the same type
+cabbrev lvim
+      \ lvim /\<lt><C-R><C-W>\>/gj
+      \ *<C-R>=(expand("%:e")=="" ? "" : ".".expand("%:e"))<CR>
+      \ <Bar> lw
+      \ <C-Left><C-Left><C-Left>
+
+augroup filetypedetect
+  au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
+augroup END 
+
+color xoria256
+
+let NERDTreeIgnore+=['\.pyc$']
+
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+let g:syntastic_auto_loc_list=1
