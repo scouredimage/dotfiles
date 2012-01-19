@@ -1,18 +1,21 @@
-[core]
-	excludesfile = /Users/sandesh/.gitexcludes
 [user]
-	name = Sandesh Devaraju
-	email = scouredimage@gmail.com
+    name = Sandesh Devaraju
+    email = sdevaraju@appnexus.com
+[github]
+    user = scouredimage
+    token = 
+[core]
+    excludesfile = /Users/sandesh/.gitexcludes
 [color]
-	ui = auto
+    ui = auto
 [alias]
-	st = status
-	ci = commit
-	co = checkout
-	staged = diff --cached
-	amend = commit --amend
-	oneline = log --oneline
-	unstaged = diff
-	both = diff HEAD
+    st = status
+    ci = commit
+    co = checkout
+    staged = diff --cached
+    amend = commit --amend
+    oneline = log --oneline
+    unstaged = diff
+    both = diff HEAD
 [log]
-	decorate = short
+    decorate = short
