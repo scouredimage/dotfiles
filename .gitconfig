@@ -1,9 +1,9 @@
 [user]
     name = Sandesh Devaraju
-    email = sdevaraju@appnexus.com
+    email = foo@bar.com
 [github]
     user = scouredimage
-    token = 
+    token = foo
 [core]
     excludesfile = /Users/sandesh/.gitexcludes
 [color]
