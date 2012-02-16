@@ -11,7 +11,12 @@ set nocompatible
 set hidden
 set background=dark
 
-set nowrap        " don't wrap lines
+set encoding=utf-8
+set scrolloff=3
+
+set wrap
+set textwidth=79
+set formatoptions=qrn1
 
 set tabstop=4     " a tab is four spaces
 set shiftwidth=4
@@ -21,8 +26,6 @@ set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
 set autoindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting
-set number        " always show line numbers
-set shiftwidth=4  " number of spaces to use for autoindenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     " set show matching parenthesis
 set ignorecase    " ignore case when searching
@@ -32,6 +35,14 @@ set smarttab      " insert tabs on the start of a line according to
                   "    shiftwidth, not tabstop
 set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
+
+" clear out a search
+nnoremap <leader><space> :noh<cr>
+
+set relativenumber
+set showmode
+set showcmd
+set undofile
 
 set history=1000         " remember more commands and search history
 set undolevels=1000      " use many muchos levels of undo
