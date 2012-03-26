@@ -5,7 +5,7 @@
     user = scouredimage
     token = foo
 [core]
-    excludesfile = ~/.gitexcludes
+    excludesfile = /home/sdevaraju/.gitexcludes
 [color]
     ui = auto
 [alias]
