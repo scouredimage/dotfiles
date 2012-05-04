@@ -35,15 +35,15 @@ export PIG_OPTIONS="-Dmapred.reduce.tasks.speculative.execution=false"
 export PIG_OPTS=$PIG_OPTIONS
 export HBASE_CLASSPATH=$HADOOP_CONF_DIR
 export HBASE_CONF_DIR=$HADOOP_CONF_DIR
-export EDITOR="/usr/bin/vi"
+export EDITOR="/usr/local/bin/vim"
 export GREP_COLOR=31
+alias vi="/usr/local/bin/vim"
+alias vim="vi"
 alias grep="grep --color=auto"
 alias ll="ls -lha --color=auto"
 alias hdfs="hadoop dfs"
-
-[ -x "/Applications/MacVim.app/Contents/MacOS/Vim" ] && alias vi=/Applications/MacVim.app/Contents/MacOS/Vim
-
-alias jump='ssh -AY jump.adnxs.net'
+alias jump='ssh jump'
 
 export PYTHONPATH=$HOME/code/appnexus/optimization:$PYTHONPATH
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
+source "`brew --prefix grc`/etc/grc.bashrc"
