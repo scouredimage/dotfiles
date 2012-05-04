@@ -1,11 +1,11 @@
 [user]
     name = Sandesh Devaraju
-    email = foo@bar.com
+    email = scouredimage@gmail.com
 [github]
     user = scouredimage
     token = foo
 [core]
-    excludesfile = /home/sdevaraju/.gitexcludes
+    excludesfile = ~/.gitexcludes
 [color]
     ui = auto
 [alias]
