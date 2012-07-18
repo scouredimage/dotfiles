@@ -6,6 +6,8 @@ call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 
+set t_Co=256
+
 set nocompatible
 
 set hidden
@@ -42,7 +44,6 @@ nnoremap <leader><space> :noh<cr>
 set relativenumber
 set showmode
 set showcmd
-set undofile
 
 set history=1000         " remember more commands and search history
 set undolevels=1000      " use many muchos levels of undo
@@ -61,6 +62,13 @@ set cursorline
 set ttyfast
 set ruler
 
+" Reload .vimrc
+map <leader>rv :source ~/.vimrc<CR>
+
+" Copy and paste from X clipboard -
+com -range Cz :silent :<line1>,<line2>w !pbcopy
+ca cz Cz
+
 " Display completion menu
 set wildmenu
 " ignore these files in wildmenu
@@ -68,6 +76,20 @@ set wildignore=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.pyc,*.swp,*.bak,*.class
 
 " Clear current search term highlight
 nmap <silent> ,/ :nohlsearch<CR>
+
+" Make Y consistent with D and C
+map Y y$
+
+" Search
+nmap <leader>s  :%s/
+vmap <leader>s  :s/
+
+" Indent visual mode selection with tab
+vmap <tab> >gv
+vmap <s-tab> <gv
+
+" Split screen
+map <leader>v   :vsp<CR>
 
 " gz in command mode closes the current buffer
 map gz :bdelete<cr>
@@ -80,44 +102,32 @@ map gB :bprev<cr>
 " files of the same type
 cabbrev lvim
       \ lvim /\<lt><C-R><C-W>\>/gj
-      \ *<C-R>=(expand("%:e")=="" ? "" : ".".expand("%:e"))<CR>
+      \ **/*<C-R>=(expand("%:e")=="" ? "" : ".".expand("%:e"))<CR>
       \ <Bar> lw
       \ <C-Left><C-Left><C-Left>
-
-augroup filetypedetect
-  au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
-augroup END
 
 set t_Co=512
 syntax on
 set background=dark
-"let g:solarized_termcolors=256
-"colorscheme solarized
 colorscheme zenburn
 let g:zenburn_force_dark_Background=1
-set guifont=Inconsolata:h18
+"set guifont=Inconsolata:h18
 
-"let NERDTreeIgnore+=['\.pyc$']
+"let g:NERDTreeIgnore+=['\.pyc$']
 let g:NERDTreeDirArrows=0
 
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
-let g:syntastic_auto_loc_list=1
+"let g:syntastic_auto_loc_list=1
 
-let g:LustyJugglerSuppressRubyWarning = 1
-
-let python_highlight_all = 1
-
-let g:miniBufExplMapWindowNavVim = 1
-"let g:miniBufExplMapWindowNavArrows = 1
-"let g:miniBufExplMapCTabSwitchBufs = 1
+let python_highlight_all=1
 
 noremap gt   :MBEbn<cr>
 noremap gT   :MBEbp<cr>
 
-" F10 Toggles pastemode
-set pastetoggle="<F10>"
+" F2 toggles pastemode
+set pastetoggle=<F2>
 
 " sudo powers
 cmap w!! %!sudo tee > /dev/null %
@@ -128,9 +138,16 @@ map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 
-" Switch to alternate file
-map <C-N> :bn<cr>
-map <C-M> :bp<cr>
-
 " Nearest source control ancestor
-let g:ctrlp_working_path_mode = 2
+let g:ctrlp_working_path_mode=2
+
+let g:EasyGrepRecursive=1
+let g:EasyGrepIgnoreCase=1
+let g:EasyGrepHidden=0
+let g:EasyGrepMode=2        " 0=all files / 1=open buffers / 2=track extension
+let g:EasyGrepOpenWindowOnMatch=1
+let g:EasyGrepEveryMatch=0
+let g:EasyGrepJumpToMatch=0
+let g:EasyGrepSearchCurrentBufferDir=0
+
+autocmd BufNewFile,BufRead *.conf set ft=javascript
