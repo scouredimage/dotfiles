@@ -1,6 +1,3 @@
-shopt -s histappend
-export PROMPT_COMMAND="history -n; history -a"
-
 export LC_ALL=en_US.UTF-8
 export LD_LIBRARY_PATH=/opt/python27/lib:/usr/local/lib
 export PATH=/home/sdevaraju/bin:/opt/py27/bin:/usr/local/nz/bin:$PATH
