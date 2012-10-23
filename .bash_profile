@@ -1,6 +1,3 @@
-shopt -s histappend
-export PROMPT_COMMAND="history -n; history -a"
-
 export LC_ALL=en_US.UTF-8
 export LD_LIBRARY_PATH=/opt/python27/lib:/usr/local/lib
 export PATH=/home/sdevaraju/bin:/opt/py27/bin:/usr/local/nz/bin:$PATH
@@ -8,6 +5,7 @@ export PREFIX_PATH=/home/sdevaraju/python-packages
 export PYTHONPATH=/home/sdevaraju/optimization:$PREFIX_PATH/lib/python2.7/site-packages:$PYTHONPATH
 export MPLCONFIGDIR=/home/sdevaraju/.matplotlib
 export PYCHARM_JDK=/usr/java/latest/
+export INPUTRC=/home/sdevaraju/.inputrc
 
 alias tmux='tmux -2'
 
