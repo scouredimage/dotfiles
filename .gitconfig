@@ -19,6 +19,7 @@
     both = diff HEAD
     lg = log --graph --pretty=oneline --abbrev-commit --decorate
     wdiff = diff --word-diff
+    pull-all = !git pull --rebase && cd framework && git pull --rebase
 [log]
     decorate = short
 [push]
