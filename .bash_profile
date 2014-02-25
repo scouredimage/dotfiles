@@ -5,6 +5,7 @@ export PREFIX_PATH=/home/sdevaraju/python-packages
 export PYTHONPATH=/home/sdevaraju/optimization:$PREFIX_PATH/lib/python2.7/site-packages:$PYTHONPATH
 export MPLCONFIGDIR=/home/sdevaraju/.matplotlib
 export PYCHARM_JDK=/usr/java/latest/
+export INPUTRC=/home/sdevaraju/.inputrc
 
 alias tmux='tmux -2'
 
