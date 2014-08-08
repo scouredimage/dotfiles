@@ -3,7 +3,7 @@
 filetype off
 call pathogen#infect()
 call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+call pathogen#incubate()
 filetype plugin indent on
 
 set t_Co=256
@@ -151,3 +151,4 @@ let g:EasyGrepJumpToMatch=0
 let g:EasyGrepSearchCurrentBufferDir=0
 
 autocmd BufNewFile,BufRead *.conf set ft=javascript
+
