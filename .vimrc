@@ -3,16 +3,19 @@
 filetype off
 call pathogen#infect()
 call pathogen#helptags()
-call pathogen#incubate()
+call pathogen#infect('bundle/{}')
 filetype plugin indent on
 
 set t_Co=256
+let &t_AB="\e[48;5;%dm"
+let &t_AF="\e[38;5;%dm"
+
+syntax enable
+set background=dark
+colorscheme peaksea
 
 set nocompatible
-
 set hidden
-set background=dark
-
 set encoding=utf-8
 set scrolloff=3
 
@@ -38,8 +41,23 @@ set smarttab      " insert tabs on the start of a line according to
 set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
 
+let mapleader = "\<Space>"      " map spacebar to leader
+
 " clear out a search
 nnoremap <leader><space> :noh<cr>
+" <Space>o to open a new file
+nnoremap <Leader>o :CtrlP<CR>
+" <Space>w to save file
+nnoremap <Leader>w :w<CR>
+" copy & paste to system clipboard with <Space>p and <Space>y
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+" enter visual line mode with <Space><Space>
+nmap <Leader><Leader> V
 
 set relativenumber
 set showmode
@@ -106,13 +124,6 @@ cabbrev lvim
       \ <Bar> lw
       \ <C-Left><C-Left><C-Left>
 
-set t_Co=512
-syntax on
-set background=dark
-colorscheme zenburn
-let g:zenburn_force_dark_Background=1
-"set guifont=Inconsolata:h18
-
 "let g:NERDTreeIgnore+=['\.pyc$']
 let g:NERDTreeDirArrows=0
 
@@ -152,3 +163,26 @@ let g:EasyGrepSearchCurrentBufferDir=0
 
 autocmd BufNewFile,BufRead *.conf set ft=javascript
 
+" airline
+let g:airline_powerline_fonts = 1
+set laststatus=2
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+
+" http://vim.wikia.com/wiki/Copy_or_change_search_hit
+vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
+    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
+omap s :normal vs<CR>
+
+" jump to end of pased text
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
+" select pasted text
+noremap gV `[v`]
+
+" hate that annoying window
+map q: :q

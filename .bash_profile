@@ -1,16 +1,19 @@
-export SCALA_HOME=/usr/local/share/scala/current
-export KAFKA_HOME=/usr/local/share/kafka/current
+export JAVA_HOME=/usr/java/jdk1.8.0_31
+export KAFKA_HOME=/home/sdevaraju/kafka/current
 export SPARK_HOME=/home/sdevaraju/spark/current
+export LOGSTASH_HOME=/home/sdevaraju/logstash/current
+export M2_HOME=/home/sdevaraju/maven/current
 
 export LC_ALL=en_US.UTF-8
 export LD_LIBRARY_PATH=/usr/lib64/atlas:$LD_LIBRARY_PATH
-export PATH=$HOME/bin:/usr/local/nz/bin:$SCALA_HOME/bin:$KAFKA_HOME/bin:$SPARK_HOME/bin:$PATH
+export PATH=$HOME/bin:/usr/local/nz/bin:$KAFKA_HOME/bin:$SPARK_HOME/bin:$JAVA_HOME/bin:$LOGSTASH_HOME/bin:$M2_HOME/bin:$PATH
 export PREFIX_PATH=/home/sdevaraju/python-packages
 export PYTHONPATH=/home/sdevaraju/optimization:$PREFIX_PATH/lib/python2.7/site-packages:$PYTHONPATH
 export MPLCONFIGDIR=/home/sdevaraju/.matplotlib
 export PYCHARM_JDK=/usr/java/latest/
 export INPUTRC=/home/sdevaraju/.inputrc
 
+export TERM='screen'
 alias tmux='tmux -2'
 
 # See http://munkymorgy.blogspot.com/2008/07/screen-ctrl-s-bug.html
