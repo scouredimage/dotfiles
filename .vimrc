@@ -10,9 +10,13 @@ set t_Co=256
 let &t_AB="\e[48;5;%dm"
 let &t_AF="\e[38;5;%dm"
 
+" enable true color terminal
+set termguicolors
+
 syntax enable
 set background=dark
-colorscheme peaksea
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 set nocompatible
 set hidden
@@ -124,13 +128,39 @@ cabbrev lvim
       \ <Bar> lw
       \ <C-Left><C-Left><C-Left>
 
+" open NERDTree with Ctrl+n
+map <C-n> :NERDTreeToggle<CR>
 "let g:NERDTreeIgnore+=['\.pyc$']
 let g:NERDTreeDirArrows=0
+" open NERDTree automatically when vim starts up on opening a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_auto_loc_list=1
+" NERDTree ignores
+let NERDTreeIgnore = ['\.pyc$', '__pycache__$']
+
+" Extend default NERDTree window width
+let g:NERDTreeWinSize=45
+
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
 let python_highlight_all=1
 
@@ -163,19 +193,6 @@ let g:EasyGrepSearchCurrentBufferDir=0
 
 autocmd BufNewFile,BufRead *.conf set ft=javascript
 
-" airline
-let g:airline_powerline_fonts = 1
-set laststatus=2
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
-
-" http://vim.wikia.com/wiki/Copy_or_change_search_hit
-vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
-    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
-omap s :normal vs<CR>
-
 " jump to end of pased text
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
@@ -186,3 +203,26 @@ noremap gV `[v`]
 
 " hate that annoying window
 map q: :q
+
+" autoreload vim config
+augroup myvimrchooks
+  au!
+  autocmd bufwritepost .vimrc source ~/.vimrc
+augroup END
+
+" enable mouse
+set mouse=a
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#fugitiveline#enabled=1
+let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#hunks#enabled=0
+autocmd QuickFixCmdPost *grep* cwindow
+
+" <tab>/<shift+tab> to switch tabs
+:nnoremap <Tab> :bnext<CR>
+:nnoremap <S-Tab> :bprevious<CR>
+
+let g:jsonnet_fmt_options="--string-style l --indent 0"

@@ -16,34 +16,24 @@ export ZSH_THEME="robbyrussell"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx brew django)
+plugins=(git osx brew)
+export VIRTUAL_ENV_DISABLE_PROMPT=
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-export PATH=$HOME/bin:/Library/PostgreSQL/9.0/bin:$PATH
-
-export JAVA_HOME=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
-export PATH=~/bin:$JAVA_HOME/bin:$PATH
-export AWS_ACCESS_KEY_ID=
-export AWS_SECRET_ACCESS_KEY=
-export HADOOP_EC2_HOME=~/code/kikin/mapreduce/clouderaec2
-export HADOOP_CONF_DIR=$HADOOP_EC2_HOME/conf/watson
-export PIG_CLASSPATH=$HADOOP_CONF_DIR
-export PIG_OPTIONS="-Dmapred.reduce.tasks.speculative.execution=false"
-export PIG_OPTS=$PIG_OPTIONS
-export HBASE_CLASSPATH=$HADOOP_CONF_DIR
-export HBASE_CONF_DIR=$HADOOP_CONF_DIR
-export EDITOR="/usr/local/bin/vim"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home
+export PATH=~/bin:$JAVA_HOME/bin:/usr/local/opt/postgresql@9.6/bin:/usr/local/Cellar/mysql@5.6/5.6.39/bin:/Users/sandesh/istio/current/bin:/usr/local/opt/sbt@0.13/bin:$PATH
+export EDITOR="/usr/bin/vim"
 export GREP_COLOR=31
-alias vi="/usr/local/bin/vim"
+export AIRFLOW_HOME=~/airflow
+
+alias vi="/usr/bin/vim"
 alias vim="vi"
 alias grep="grep --color=auto"
-alias ll="ls -lha --color=auto"
-alias hdfs="hadoop dfs"
-alias jump='ssh jump'
+alias ll="ls -lhaG"
 
-export PYTHONPATH=$HOME/code/appnexus/optimization:$PYTHONPATH
-export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
-source "`brew --prefix grc`/etc/grc.bashrc"
+# Overload system default 256-color palette with precise gruvbox colors
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+

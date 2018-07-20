@@ -3,7 +3,7 @@
     email = scouredimage@gmail.com
 [github]
     user = scouredimage
-    token = foo
+    token = 
 [core]
     excludesfile = ~/.gitexcludes
 [color]
